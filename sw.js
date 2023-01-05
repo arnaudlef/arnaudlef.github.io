@@ -1,10 +1,10 @@
-const CACHE_NAME = `my-sample-app-cache-v1`;
+const urlsToCache = ['/', "style.css", "icon512.png"];
 
 // Use the install event to pre-cache all initial resources.
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
-        const cache = await caches.open(CACHE_NAME);
-        cache.addAll(['/']);
+        const cache = await caches.open("pwa-assets");
+        cache.addAll(urlsToCache);
     })());
 });
 
