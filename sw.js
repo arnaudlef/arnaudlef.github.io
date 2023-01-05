@@ -1,3 +1,24 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(function(registration) {
+            console.log('Service worker registered:', registration);
+        })
+        .catch(function(error) {
+            console.log('Service worker registration failed:', error);
+        });
+}
+
+function updateOnlineStatus(event) {
+    if (navigator.onLine) {
+        document.getElementById('status').textContent = 'En ligne';
+    } else {
+        document.getElementById('status').textContent = 'Hors-ligne';
+    }
+}
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+
 const urlsToCache = ['/', "style.css", "icon512.png"];
 
 // Use the install event to pre-cache all initial resources.
