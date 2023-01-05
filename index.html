@@ -6,10 +6,28 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
+    <div id="status">Connecté</div>
     <script>
-        if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', { scope: '/' });
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(function(registration) {
+                    console.log('Service worker registered:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Service worker registration failed:', error);
+                });
         }
+
+        function updateOnlineStatus(event) {
+            if (navigator.onLine) {
+                document.getElementById('status').textContent = 'En ligne';
+            } else {
+                document.getElementById('status').textContent = 'Hors-ligne';;
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
     </script>
 </body>
 </html>

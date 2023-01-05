@@ -2,7 +2,7 @@
   "lang": "en-us",
   "name": "Title of my sample PWA",
   "short_name": "Title Pwa",
-  "description": "A sample PWA for testing purposes",
+  "description": "A samp le PWA for testing purposes",
   "start_url": "/",
   "background_color": "#45b6fe",
   "theme_color": "#ff0000",
